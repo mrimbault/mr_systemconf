@@ -1,0 +1,28 @@
+
+---
+- hosts: archlinux
+  gather_facts: yes
+  # Path to custom facts on host.
+  fact_path: "{{ facts_dir }}"
+  # FIXME
+  vars:
+    # Default theme is the first from the list.
+    default_theme: "{{ theme_list | min }}"
+    # Get the actually selected theme from custom facts, or use the default.
+    selected_theme: "{{ ansible_local.theme.global.theme_name | default(default_theme) }}"
+  # Include color theme variables.
+  vars_files:
+    - "vars/theme_colors.yml"
+    - "vars/theme_applications.yml"
+
+  # Roles to be played
+  roles:
+    - systemd
+    - editor
+    - shell
+    - x
+    - wm
+    - terminal
+
+
+

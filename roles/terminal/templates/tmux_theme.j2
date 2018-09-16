@@ -1,0 +1,77 @@
+######################
+## panes
+set -g pane-border-bg "{{ tmux.paneborderbg }}"
+set -g pane-border-fg "{{ tmux.paneborderfg }}"
+set -g pane-active-border-bg "{{ tmux.paneactiveborderbg }}"
+set -g pane-active-border-fg "{{ tmux.paneactiveborderfg }}"
+# Set inactive/active window pane styles.
+# FIXME use the same as default terminal bg and fg for active, and lower
+# contrast for inactive.
+set -g window-style 'bg={{ tmux.windowstylebg }},fg={{ tmux.windowstylefg }}'
+set -g window-active-style 'bg={{ tmux.windowactivestylebg }},fg={{ tmux.windowactivestylefg }}'
+
+######################
+## statusbar
+set -g status-bg "{{ tmux.statusbg }}"
+set -g status-fg "{{ tmux.statusfg }}"
+set -g status-attr "{{ tmux.statusattr }}"
+set -g status-left ''
+set -g status-right '#["bg={{ tmux.statusrightbg }},fg={{ tmux.statusrightfg }},attr={{ tmux.statusrightattr }}"](#S) #(whoami)@#(hostname) '
+
+
+#set -g status-right '#[fg=yellow]#(cut -d " " -f 1-3 /proc/loadavg)#[default] #[fg=white]%H:%M#[default]'
+#Set the left and right status
+#set -g status-left '#[bg=colour7]#[fg=colour0]#{?client_prefix,#[bg=colour2],} ❐ #S #[bg=colour8]#[fg=colour7]#{?client_prefix,#[fg=colour2],}#{?window_zoomed_flag, 🔍 ,}#[fg=colour1]  ♥ #(~/dotfiles/tmux_scripts/battery.sh)  '
+#set -g status-right '#[fg=colour2]#(~/dotfiles/tmux_scripts/uptime.sh) #[fg=colour1]#[fg=colour4]#[bg=colour4]#[fg=colour0] #(~/dotfiles/tmux_scripts/music.sh) #[bg=colour4]#[fg=colour7]#[bg=colour7]#[fg=colour0] %b %d %H:%M '
+# #{session_name}:#{window_index}.#{pane_index}
+#set -g status-right '#[fg=colour233,bg=colour19,bold] %d/%m #[fg=colour233,bg=colour8,bold] %H:%M:%S '
+
+
+setw -g window-status-current-bg "{{ tmux.windowstatuscurrentbg }}"
+setw -g window-status-current-fg "{{ tmux.windowstatuscurrentfg }}"
+setw -g window-status-current-attr "{{ tmux.windowstatuscurrentattr }}"
+
+# FIXME change this?
+#setw -g window-status-current-format ' #I#[fg=colour249]:#[fg=colour255]#W#[fg=colour249]#F '
+
+setw -g window-status-bg "{{ tmux.windowstatusbg }}"
+setw -g window-status-fg "{{ tmux.windowstatusfg }}"
+setw -g window-status-attr "{{ tmux.windowstatusattr }}"
+
+# FIXME change this?
+#setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
+
+setw -g window-status-bell-bg "{{ tmux.windowstatusbellbg }}"
+setw -g window-status-bell-fg "{{ tmux.windowstatusbellfg }}"
+setw -g window-status-bell-attr "{{ tmux.windowstatusbellattr }}"
+
+# FIXME is window-status-bell-format a thing?
+
+######################
+## messages
+# set tmux command line scheme
+set -g message-bg "{{ tmux.messagebg }}"
+set -g message-fg "{{ tmux.messagefg }}"
+set -g message-attr "{{ tmux.messageattr }}"
+
+# FIXME change this ?
+#set-option -ag message-style fg=colour3,blink; set-option -ag message-style bg=colour8
+
+
+######################
+##  modes
+# FIXME how information appear when in other mode that normal (like copy mode)
+setw -g mode-bg "{{ tmux.modebg }}"
+setw -g mode-fg "{{ tmux.modefg }}"
+setw -g mode-attr "{{ tmux.modeattr }}"
+
+# FIXME other design change to modes
+# - identify which mode we are on (copy mode, etc.)
+# - change colors and information bars location (copy mode displays count up
+#   and right)
+
+# clock mode theme
+setw -g clock-mode-colour "{{ tmux.clockmodecolour }}"
+
+
+

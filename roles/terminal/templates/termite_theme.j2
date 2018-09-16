@@ -1,0 +1,42 @@
+{# BEGIN ANSIBLE VARIABLE SECTION #}
+{# Configured using variables loaded from theme file. #}
+
+# If both of these are unset, cursor falls back to the foreground color,
+# and cursor_foreground falls back to the background color.
+#cursor = {{ termite.cursor }}
+#cursor_foreground = {{ termite.cursor_foreground }}
+
+# FIXME
+foreground = {{ termite.foreground }}
+foreground_bold = {{ termite.foreground_bold }}
+background = {{ termite.background }}
+
+# If unset, will reverse foreground and background when highlighting.
+highlight = #2f2f2f
+
+# black
+color0  = {{ termite.color0 }}
+color8  = {{ termite.color8 }}
+# red
+color1  = {{ termite.color1 }}
+color9  = {{ termite.color9 }}
+# green
+color2  = {{ termite.color2 }}
+color10 = {{ termite.color10 }}
+# yellow
+color3  = {{ termite.color3 }}
+color11 = {{ termite.color11 }}
+# blue
+color4  = {{ termite.color4 }}
+color12 = {{ termite.color12 }}
+# magenta
+color5  = {{ termite.color5 }}
+color13 = {{ termite.color13 }}
+# cyan
+color6  = {{ termite.color6 }}
+color14 = {{ termite.color14 }}
+# white
+color7   = {{ termite.color7 }}
+color15 = {{ termite.color15 }}
+
+{# END ANSIBLE VARIABLE SECTION #}

@@ -1,0 +1,11 @@
+
+- name: Load tmux {{ theme }} theme variables.
+  include_vars: "vars/tmux_theme_{{ theme }}.yml"
+  tags: theme, tmux
+
+- name: Update tmux {{ theme }} theme file.
+  template:
+    src: 'templates/tmux_theme.j2'
+    dest: "{{ theme_dir }}/tmux_theme_{{ theme }}.conf"
+  tags: theme, tmux
+

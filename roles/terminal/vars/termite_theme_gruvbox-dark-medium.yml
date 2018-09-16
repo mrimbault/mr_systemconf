@@ -1,0 +1,33 @@
+
+# FIXME this requires an explanation
+termite:
+    background:        "{{ gruvbox_dark_medium.hc1 }}"
+    foreground:        "{{ gruvbox_dark_medium.hc2 }}"
+    foreground_bold:   "{{ gruvbox_dark_medium.hc2 }}"
+    cursor:            "{{ gruvbox_dark_medium.hc2 }}"
+    cursor_foreground: "{{ gruvbox_dark_medium.hc1 }}"
+    # Black and darkgrey.
+    color0:            "{{ gruvbox_dark_medium.color0 }}"
+    color8:            "{{ gruvbox_dark_medium.color8 }}"
+    # Red.
+    color1:            "{{ gruvbox_dark_medium.color1 }}"
+    color9:            "{{ gruvbox_dark_medium.color9 }}"
+    # Green.
+    color2:            "{{ gruvbox_dark_medium.color2 }}"
+    color10:           "{{ gruvbox_dark_medium.color10 }}"
+    # Yellow.
+    color3:            "{{ gruvbox_dark_medium.color3 }}"
+    color11:           "{{ gruvbox_dark_medium.color11 }}"
+    # Blue.
+    color4:            "{{ gruvbox_dark_medium.color4 }}"
+    color12:           "{{ gruvbox_dark_medium.color12 }}"
+    # Magenta.
+    color5:            "{{ gruvbox_dark_medium.color5 }}"
+    color13:           "{{ gruvbox_dark_medium.color13 }}"
+    # Cyan.
+    color6:            "{{ gruvbox_dark_medium.color6 }}"
+    color14:           "{{ gruvbox_dark_medium.color14 }}"
+    # Lightgrey and white.
+    color7:            "{{ gruvbox_dark_medium.color7 }}"
+    color15:           "{{ gruvbox_dark_medium.color15 }}"
+

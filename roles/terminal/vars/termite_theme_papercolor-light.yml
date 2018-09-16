@@ -1,0 +1,33 @@
+
+# FIXME this requires an explanation
+termite:
+    background:        "{{ papercolor_light.hc1 }}"
+    foreground:        "{{ papercolor_light.hc2 }}"
+    foreground_bold:   "{{ papercolor_light.hc2 }}"
+    cursor:            "{{ papercolor_light.hc2 }}"
+    cursor_foreground: "{{ papercolor_light.hc1 }}"
+    # Black and darkgrey.
+    color0:            "{{ papercolor_light.color0 }}"
+    color8:            "{{ papercolor_light.color8 }}"
+    # Red.
+    color1:            "{{ papercolor_light.color1 }}"
+    color9:            "{{ papercolor_light.color9 }}"
+    # Green.
+    color2:            "{{ papercolor_light.color2 }}"
+    color10:           "{{ papercolor_light.color10 }}"
+    # Yellow.
+    color3:            "{{ papercolor_light.color3 }}"
+    color11:           "{{ papercolor_light.color11 }}"
+    # Blue.
+    color4:            "{{ papercolor_light.color4 }}"
+    color12:           "{{ papercolor_light.color12 }}"
+    # Magenta.
+    color5:            "{{ papercolor_light.color5 }}"
+    color13:           "{{ papercolor_light.color13 }}"
+    # Cyan.
+    color6:            "{{ papercolor_light.color6 }}"
+    color14:           "{{ papercolor_light.color14 }}"
+    # Lightgrey and white.
+    color7:            "{{ papercolor_light.color7 }}"
+    color15:           "{{ papercolor_light.color15 }}"
+

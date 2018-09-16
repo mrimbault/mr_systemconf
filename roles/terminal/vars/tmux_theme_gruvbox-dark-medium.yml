@@ -1,0 +1,58 @@
+
+tmux:
+    # Attribute possible values: bright (or bold), dim, underscore, blink,
+    # reverse, hidden, italics, or strikethrough.
+    #
+    # Panes colors.
+    # Active window should be set to the same values as terminal background and
+    # foreground colors.
+    windowactivestylebg:     "{{ gruvbox_dark_medium.hc1 }}"
+    windowactivestylefg:     "{{ gruvbox_dark_medium.hc2 }}"
+    # Inactive window should use less contrasted colors.
+    windowstylebg:           "{{ gruvbox_dark_medium.lc1 }}"
+    windowstylefg:           "{{ gruvbox_dark_medium.lc2 }}"
+    #
+    # Panes borders colors.
+    # Set background background to the same color as inactive window pane
+    # background so it is less visible.
+    paneborderbg:            "{{ gruvbox_dark_medium.lc1 }}"
+    paneborderfg:            "{{ gruvbox_dark_medium.lcsep }}"
+    paneactiveborderbg:      "{{ gruvbox_dark_medium.lc1 }}"
+    paneactiveborderfg:      "{{ gruvbox_dark_medium.colsep }}"
+    #
+    # FIXME Statusbar colors.
+    statusbg:                "{{ gruvbox_dark_medium.lc1 }}"
+    statusfg:                "{{ gruvbox_dark_medium.lc2 }}"
+    statusattr:              "dim"
+    # Left statusbar colors: no left statusbar.
+    # Right statusbar colors.
+    # FIXME use same bgcolor as window status bg?
+    statusrightbg:           "{{ gruvbox_dark_medium.lc1 }}"
+    statusrightfg:           "{{ gruvbox_dark_medium.flash }}"
+    statusrightattr:         "dim"
+    # FIXME Window status colors.
+    windowstatuscurrentbg:   "{{ gruvbox_dark_medium.info }}"
+    windowstatuscurrentfg:   "{{ gruvbox_dark_medium.hc1 }}"
+    windowstatuscurrentattr: "bright"
+    #windowstatuscurrentformat ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
+    windowstatusbg:          "{{ gruvbox_dark_medium.lc1 }}"
+    windowstatusfg:          "{{ gruvbox_dark_medium.lc2 }}"
+    windowstatusattr:        "dim"
+    #windowstatusformat ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
+    windowstatusbellbg:      "{{ gruvbox_dark_medium.lc2 }}"
+    windowstatusbellfg:      "{{ gruvbox_dark_medium.lc1 }}"
+    windowstatusbellattr:    "bright"
+    # FIXME Messages colors.
+    messagebg:               "{{ gruvbox_dark_medium.flash }}"
+    messagefg:               "{{ gruvbox_dark_medium.hc1 }}"
+    messageattr:             "bright"
+    #set-option -ag message-style fg=colour3,blink; set-option -ag message-style bg=colour8
+    # Mode indicators colors.
+    # FIXME high contrast blue background, white foreground
+    modebg:                  "{{ gruvbox_dark_medium.flash }}"
+    modefg:                  "{{ gruvbox_dark_medium.hc1 }}"
+    modeattr:                "bright"
+    # Clock mode foreground color.
+    clockmodecolour:         "{{ gruvbox_dark_medium.flash }}"
+
+

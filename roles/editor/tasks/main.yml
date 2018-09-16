@@ -1,0 +1,34 @@
+
+
+- name: Update Vim configuration file.
+  template:
+    src: 'templates/vimrc.j2'
+    dest: "{{ home_dir }}/.vimrc"
+  tags: vim
+
+- name: Update Vim color scheme include configuration files.
+  copy:
+    src: 'files/vim_theme_{{ theme }}.vim'
+    dest: "{{ theme_dir }}/vim_theme_{{ theme }}.vim"
+  loop: "{{ theme_list }}"
+  loop_control:
+    loop_var: "theme"
+  tags: vim, theme
+
+- name: Create symbolic link for the currently used theme.
+  file:
+    src: "{{ theme_dir }}/vim_theme_{{ selected_theme }}.vim"
+    dest: "{{ theme_dir }}/current_theme.vim"
+    state: link
+  tags: vim, theme
+
+- name: Update script used to change Vim theme.
+  copy:
+    src: 'files/vim_change_theme.sh'
+    dest: "{{ script_dir }}/vim_change_theme"
+    mode: "0755"
+  become: yes
+  tags: sudo, script, vim, theme
+
+
+

@@ -1,0 +1,11 @@
+
+- name: Load rofi {{ theme }} theme variables.
+  include_vars: "vars/rofi_theme_{{ theme }}.yml"
+  tags: theme, rofi
+
+- name: Update rofi {{ theme }} theme file.
+  template:
+    src: 'templates/rofi_theme.j2'
+    dest: "{{ theme_dir }}/rofi_theme_{{ theme }}.rasi"
+  tags: theme, rofi
+

@@ -1,0 +1,22 @@
+all:
+  hosts:
+    archlinux:
+      ansible_connection: "local"
+      user_name: "mr"
+      home_dir: "/home/mr"
+      git_dir: "/var/lib/git"
+      script_dir: "/usr/local/bin"
+      systemconfdir: "{{ git_dir }}/mr_systemconfig"
+      share_dir: "{{ home_dir }}/.local/share/mr_systemconfig"
+      theme_dir: "{{ share_dir }}/themes"
+      facts_dir: "{{ share_dir }}/ansible_facts.d"
+      theme_list:
+        - "badwolf"
+        - "gruvbox-dark-medium"
+        - "papercolor-light"
+      themed_app_list:
+        - "i3"
+        - "vim"
+        - "termite"
+        - "tmux"
+

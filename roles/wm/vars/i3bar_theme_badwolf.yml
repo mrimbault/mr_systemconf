@@ -1,0 +1,26 @@
+# These variables are used on template file "i3config.j2" from role "wm".
+i3bar:
+    background: "{{ badwolf.lc1 }}"
+    statusline: "{{ badwolf.lc2 }}"
+    separator:  "{{ badwolf.lc1 }}"
+
+    focusedworkspacebackground: "{{ badwolf.info }}"
+    focusedworkspacetext:       "{{ badwolf.hc1 }}"
+    focusedworkspaceborder:     "{{ badwolf.lc1 }}"
+
+    inactiveworkspacebackground: "{{ badwolf.lc2 }}"
+    inactiveworkspacetext:       "{{ badwolf.lc1 }}"
+    inactiveworkspaceborder:     "{{ badwolf.lc1 }}"
+
+    activeworkspacebackground: "{{ badwolf.flash }}"
+    activeworkspacetext:       "{{ badwolf.hc1 }}"
+    activeworkspaceborder:     "{{ badwolf.lc1 }}"
+
+    urgentworkspacebackground: "{{ badwolf.urg }}"
+    urgentworkspacetext:       "{{ badwolf.hc2 }}"
+    urgentworkspaceborder:     "{{ badwolf.lc1 }}"
+
+    bindingmodebackground: "{{ badwolf.flash }}"
+    bindingmodetext:       "{{ badwolf.hc1 }}"
+    bindingmodeborder:     "{{ badwolf.lc1 }}"
+

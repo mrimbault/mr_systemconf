@@ -1,0 +1,29 @@
+# These variables are used on template file "i3config.j2" from role "wm".
+i3:
+    # client focused
+    clientfocusedborder:              "{{ badwolf.info }}"
+    clientfocusedbackground:          "{{ badwolf.info }}"
+    clientfocusedtext:                "{{ badwolf.hc1 }}"
+    clientfocusedindicator:           "{{ badwolf.lc1 }}"
+    clientfocusedchildborder:         "{{ badwolf.lc1 }}"
+    # client unfocused
+    clientunfocusedborder:            "{{ badwolf.lc1 }}"
+    clientunfocusedbackground:        "{{ badwolf.lc1 }}"
+    clientunfocusedtext:              "{{ badwolf.lc2 }}"
+    clientunfocusedindicator:         "{{ badwolf.lc1 }}"
+    clientunfocusedchildborder:       "{{ badwolf.lc1 }}"
+    # client focused inactive
+    clientfocusedinactiveborder:      "{{ badwolf.lc1 }}"
+    clientfocusedinactivebackground:  "{{ badwolf.lc1 }}"
+    clientfocusedinactivetext:        "{{ badwolf.info }}"
+    clientfocusedinactiveindicator:   "{{ badwolf.lc1 }}"
+    clientfocusedinactivechildborder: "{{ badwolf.lc1 }}"
+    # client urgent
+    clienturgentborder:               "{{ badwolf.urg }}"
+    clienturgentbackground:           "{{ badwolf.urg }}"
+    clienturgenttext:                 "{{ badwolf.hc2 }}"
+    clienturgentindicator:            "{{ badwolf.lc1 }}"
+    clienturgentchildborder:          "{{ badwolf.lc1 }}"
+    # client background FIXME
+    clientbackground:                 "{{ badwolf.lc1 }}"
+

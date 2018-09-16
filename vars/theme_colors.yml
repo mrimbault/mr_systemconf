@@ -1,0 +1,178 @@
+# Global themes color schemes.
+# This file initialize variables used to describe various color schemes
+# appearance (mostly: colors).
+# FIXME split one file by theme, and load only themes specified on theme_list?
+
+# Color scheme based on Badwolf Vim scheme by Steve Losh:
+# https://github.com/sjl/badwolf
+
+badwolf_colors:
+
+#set $black         #1c1b1a
+#set $darkgrey      #35322d
+#set $black         #282622
+#set $darkgrey      #6a6359
+#set $grey          #45413b
+
+#set $red           #790012
+#set $brightred     #ff2c4b
+#set $green         #455f00
+#set $brightgreen   #aeee00
+#set $yellow        #ffa724
+#set $brightyellow  #fade3e
+#set $blue          #005fff
+#set $brightblue    #0a9dff
+#set $magenta       #a04b62
+#set $brightmagenta #ff9eb8
+#set $cyan          #53976e
+#set $brightcyan    #8cffba
+#set $lightgrey     #998f84
+#set $white         #d9cec3
+# FIXME another white: #f8f6f2
+#set $brown        #88633f
+#set $lightbrown   #b88853
+#set $reddishbrown #c7915b
+#set $yellowish    #f4cf86
+
+    # based on X traditional 8*2 colors
+    black:         "#141413"
+    darkgrey:      "#282622"
+    grey:          "#6a6359"
+    lightgrey:     "#998f84"
+    white:         "#d9cec3"
+    darkred:       "#790012"
+    red:           "#ff2c4b"
+    brightred:     ""
+    darkgreen:     "#455f00"
+    green:         "#aeee00"
+    brightgreen:   ""
+    darkyellow:    "#ffa724"
+    yellow:        "#fade3e"
+    brightyellow:  ""
+    darkblue:      "#005fff"
+    blue:          "#0a9dff"
+    brightblue:    ""
+    darkmagenta:   "#a04b62"
+    magenta:       "#ff9eb8"
+    brightmagenta: ""
+    darkcyan:      "#53976e"
+    cyan:          "#8cffba"
+    brightcyan:    ""
+    # other colors
+    paleyellow:    "#f4cf86"
+
+
+# Color scheme based on Gruvbox Vim scheme, with dark background and medium
+# contrast.
+
+gruvbox_dark_medium_colors:
+
+# PalerYellow: GruvboxFg0 ctermfg=229 guifg=#fbf1c7
+# PaleYellow:  GruvboxFg1 ctermfg=223 guifg=#ebdbb2
+# LightSand:   GruvboxFg2 ctermfg=250 guifg=#d5c4a1
+# Sand:        GruvboxFg3 ctermfg=248 guifg=#bdae93
+# LightBrown:  GruvboxFg4 ctermfg=246 guifg=#a89984
+# Grey:        GruvboxGray ctermfg=245 guifg=#928374
+# Darkergrey:  GruvboxBg0 ctermfg=235 guifg=#282828
+# Darkgrey:    GruvboxBg1 ctermfg=237 guifg=#3c3836
+# Medium Grey: GruvboxBg2 ctermfg=239 guifg=#504945
+# Dark Brown:  GruvboxBg3 ctermfg=241 guifg=#665c54
+# Brown:       GruvboxBg4 ctermfg=243 guifg=#7c6f64
+# Red:         GruvboxRed ctermfg=167 guifg=#fb4934
+# Green:       GruvboxGreen ctermfg=142 guifg=#b8bb26
+# Yellow:      GruvboxYellow ctermfg=214 guifg=#fabd2f
+# Blue:        GruvboxBlue ctermfg=109 guifg=#83a598
+# Magenta:     GruvboxPurple ctermfg=175 guifg=#d3869b
+# Cyan:        GruvboxAqua ctermfg=108 guifg=#8ec07c
+# Orange:      GruvboxOrange ctermfg=208 guifg=#fe8019
+
+    # based on X traditional 8*2 colors
+    black:         "#282828"
+    darkgrey:      "#3c3836"
+    darkbrown:     "#665c54"
+    lightbrown:    "#a89984"
+    paleyellow:    "#ebdbb2"
+    white:         "#fbf1c7"
+    darkred:       "#b41504"
+    red:           "#fb4934"
+    brightred:     ""
+    darkgreen:     "#6d6e17"
+    green:         "#b8bb26"
+    brightgreen:   ""
+    darkyellow:    "#9a6d04"
+    yellow:        "#fabd2f"
+    brightyellow:  ""
+    darkblue:      "#49655a"
+    blue:          "#83a598"
+    brightblue:    ""
+    darkmagenta:   "#832f46"
+    magenta:       "#d3869b"
+    brightmagenta: ""
+    darkcyan:      "#51833f"
+    cyan:          "#8ec07c"
+    brightcyan:    ""
+    # other colors
+    darkorange:    ""
+    orange:        "#fe8019"
+    brightorange:  ""
+    # Define usual elements.
+
+
+# Color scheme based on Ayu Vim scheme
+#ayu:
+# FIXME
+
+# Color scheme based on PaperColor Vim scheme
+papercolor_light_colors:
+
+# White:             'color00' : ['#eeeeee', '255'],
+#              'color01' : ['#af0000', '124'],
+#              'color02' : ['#008700', '28'],
+#              'color03' : ['#5f8700', '64'],
+#              'color04' : ['#0087af', '31'],
+#              'color05' : ['#878787', '102'],
+#              'color06' : ['#005f87', '24'],
+#              'color07' : ['#444444', '238'],
+#              'color08' : ['#bcbcbc', '250'],
+#              'color09' : ['#d70000', '160'],
+#              'color10' : ['#d70087', '162'],
+#              'color11' : ['#8700af', '91'],
+#              'color12' : ['#d75f00', '166'],
+#              'color13' : ['#d75f00', '166'],
+#              'color14' : ['#005faf', '25'],
+#              'color15' : ['#005f87', '24'],
+#              'color16' : ['#0087af', '31'],
+#              'color17' : ['#008700', '28'],
+#              'cursor_fg' : ['#eeeeee', '255'],
+#              'cursor_bg' : ['#005f87', '24'],
+#              'cursorline' : ['#e4e4e4', '254'],
+#              'cursorcolumn' : ['#e4e4e4', '254'],
+
+
+    # Sort based on X traditional 8*2 colors
+    # Monochrom.
+    black:         "#202020"
+    darkergrey:    "#444444"
+    darkgrey:      "#878787"
+    grey:          "#bcbcbc"
+    lightgrey:     "#e4e4e4"
+    white:         "#eeeeee"
+    # Red.
+    red:           "#af0000"
+    brightred:     "#d70000"
+    # Green.
+    green:         "#008700"
+    flashygreen:   "#9cffd3"
+    # Yellow.
+    yellowgreen:   "#5f8700"
+    # Blue.
+    lightblue:     "#0087af"
+    darkblue:      "#005f87"
+    blue:          "#005faf"
+    # Magenta.
+    magenta:       "#d70087"
+    violet:        "#8700af"
+    # Cyan.
+    flashyblue:    "#66d9ef"
+    # other colors
+

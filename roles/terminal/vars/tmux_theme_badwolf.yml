@@ -1,0 +1,57 @@
+
+tmux:
+    # Attribute possible values: bright (or bold), dim, underscore, blink,
+    # reverse, hidden, italics, or strikethrough.
+    #
+    # Panes colors.
+    # Active window should be set to the same values as terminal background and
+    # foreground colors.
+    windowactivestylebg:     "{{ badwolf.hc1 }}"
+    windowactivestylefg:     "{{ badwolf.hc2 }}"
+    # Inactive window should use less contrasted colors.
+    windowstylebg:           "{{ badwolf.lc1 }}"
+    windowstylefg:           "{{ badwolf.lc2 }}"
+    #
+    # Panes borders colors.
+    # Set background background to the same color as inactive window pane
+    # background so it is less visible.
+    paneborderbg:            "{{ badwolf.lc1 }}"
+    paneborderfg:            "{{ badwolf.lcsep }}"
+    paneactiveborderbg:      "{{ badwolf.lc1 }}"
+    paneactiveborderfg:      "{{ badwolf.colsep }}"
+    #
+    # FIXME Statusbar colors.
+    statusbg:                "{{ badwolf.lc1 }}"
+    statusfg:                "{{ badwolf.lc2 }}"
+    statusattr:              "dim"
+    # Left statusbar colors: no left statusbar.
+    # Right statusbar colors.
+    # FIXME use same bgcolor as window status bg?
+    statusrightbg:           "{{ badwolf.lc1 }}"
+    statusrightfg:           "{{ badwolf.flash }}"
+    statusrightattr:         "dim"
+    # FIXME Window status colors.
+    windowstatuscurrentbg:   "{{ badwolf.info }}"
+    windowstatuscurrentfg:   "{{ badwolf.hc1 }}"
+    windowstatuscurrentattr: "bright"
+    #windowstatuscurrentformat ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
+    windowstatusbg:          "{{ badwolf.lc1 }}"
+    windowstatusfg:          "{{ badwolf.lc2 }}"
+    windowstatusattr:        "dim"
+    #windowstatusformat ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
+    windowstatusbellbg:      "{{ badwolf.lc2 }}"
+    windowstatusbellfg:      "{{ badwolf.lc1 }}"
+    windowstatusbellattr:    "bright"
+    # FIXME Messages colors.
+    messagebg:               "{{ badwolf.flash }}"
+    messagefg:               "{{ badwolf.hc1 }}"
+    messageattr:             "bright"
+    #set-option -ag message-style fg=colour3,blink; set-option -ag message-style bg=colour8
+    # Mode indicators colors.
+    # FIXME high contrast blue background, white foreground
+    modebg:                  "{{ badwolf.flash }}"
+    modefg:                  "{{ badwolf.hc1 }}"
+    modeattr:                "bright"
+    # Clock mode foreground color.
+    clockmodecolour:         "{{ badwolf.flash }}"
+

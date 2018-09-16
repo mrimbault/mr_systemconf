@@ -1,0 +1,30 @@
+{# BEGIN ANSIBLE VARIABLE SECTION #}
+
+# FIXME some comments ?
+# focused client colors for border, background, text, indicator and child border
+client.focused          {{ i3.clientfocusedborder }} \
+                        {{ i3.clientfocusedbackground }} \
+                        {{ i3.clientfocusedtext }} \
+                        {{ i3.clientfocusedindicator }} \
+                        {{ i3.clientfocusedchildborder }}
+# unfocused client colors
+client.unfocused        {{ i3.clientunfocusedborder }} \
+                        {{ i3.clientunfocusedbackground }} \
+                        {{ i3.clientunfocusedtext }} \
+                        {{ i3.clientunfocusedindicator }} \
+                        {{ i3.clientunfocusedchildborder }}
+# focused and inactive client colors
+client.focused_inactive {{ i3.clientfocusedinactiveborder }} \
+                        {{ i3.clientfocusedinactivebackground }} \
+                        {{ i3.clientfocusedinactivetext }} \
+                        {{ i3.clientfocusedinactiveindicator }} \
+                        {{ i3.clientfocusedinactivechildborder }}
+# urgent client colors
+client.urgent           {{ i3.clienturgentborder }} \
+                        {{ i3.clienturgentbackground }} \
+                        {{ i3.clienturgenttext }} \
+                        {{ i3.clienturgentindicator }} \
+                        {{ i3.clienturgentchildborder }}
+# client background color
+client.background       {{ i3.clientbackground }}
+{# END ANSIBLE VARIABLE SECTION #}

@@ -1,0 +1,262 @@
+#!/usr/bin/env bash
+#
+# FIXME adapted from rofi-theme-selector script
+# This code is released in public domain by Dave Davenport <qball@gmpclient.org>
+#
+
+
+ROFI=$(which rofi)
+SED=$(which sed)
+MKTEMP=$(which mktemp)
+
+{# ANSIBLE VARIABLE SECTION START #}
+HOMEDIR="{{ home_dir }}"
+THEMEDIR="{{ theme_dir }}"
+APPLIST="{{ themed_app_list|join(' ') }}"
+GLOBALTHEMEFILE="{{ facts_dir }}/theme.fact"
+{# ANSIBLE VARIABLE SECTION STOP #}
+
+
+if [ -z "${SED}" ]
+then
+    echo "Did not find 'sed', script cannot continue."
+    exit 1
+fi
+if [ -z "${MKTEMP}" ]
+then
+    echo "Did not find 'mktemp', script cannot continue."
+    exit 1
+fi
+if [ -z "${ROFI}" ]
+then
+    echo "Did not find rofi, there is no point to continue."
+    exit 1
+fi
+
+TMP_CONFIG_FILE="$(${MKTEMP})"
+
+
+
+
+##
+# Array with parts to the found themes.
+# And array with the printable name.
+##
+declare -a themes
+declare -a theme_names
+
+##
+# Find locally installed themes.
+# This fills in #themes array and formats a displayable string #theme_names.
+##
+function get_themes()
+{
+    # FIXME create themes based on: https://github.com/DaveDavenport/rofi-themes/tree/master/Official%20Themes
+    # Add user dir.
+    if [ -d "${THEMEDIR}" ]
+    then
+        echo "Checking themes in: ${THEMEDIR}"
+        for file in ${THEMEDIR}/*.rasi
+        do
+            if [ -f "${file}" ]
+            then
+                themes+=(${file})
+                # Extract only the theme names by removing full path, beginning
+                # of the file name, and file extension.
+                theme_names+=($(basename -s ".rasi" ${file} | sed 's/rofi_theme_//'))
+            fi
+        done
+    fi
+}
+
+##
+# Create a copy of rofi
+##
+function create_config_copy()
+{
+    ${ROFI} -dump-xresources > ${TMP_CONFIG_FILE}
+}
+
+##
+# Print the list out so it can be displayed by rofi.
+##
+function create_theme_list()
+{
+    OLDIFS=${IFS}
+    IFS='|'
+    for themen in  ${theme_names[@]}
+    do
+        echo ${themen}
+    done
+    IFS=${OLDIFS}
+}
+
+##
+# Thee indicate what entry is selected.
+##
+declare -i SELECTED
+
+function select_theme ()
+{
+    local MORE_FLAGS
+    MORE_FLAGS=(-dmenu -format i -no-custom -p "Theme" -markup)
+    MORE_FLAGS+=(-config ${TMP_CONFIG_FILE} -i)
+    MORE_FLAGS+=(-kb-custom-1 "Alt-a")
+    MORE_FLAGS+=(-u 2,3 -a 4,5 )
+    local CUR
+    CUR="default"
+    while true
+    do
+        declare -i RTR
+        declare -i RES
+        local MESG
+        # FIXME newline?
+        MESG="""You can preview themes by hitting <b>Enter</b>.
+<b>Alt-a</b> to accept the new theme.
+<b>Escape</b> to cancel
+Current theme: <b>${CUR}</b>"""
+        # FIXME why not local?
+        THEME_FLAG=
+        if [ -n "${SELECTED}" ]
+        then
+            THEME_FLAG="-theme ${themes[${SELECTED}]}"
+        fi
+        RES=$(create_theme_list | ${ROFI} ${THEME_FLAG} ${MORE_FLAGS[@]} \
+                -cycle -selected-row "${SELECTED}" -mesg "${MESG}")
+        RTR=$?
+        if [ ${RTR} = 10 ]
+        then
+            return 0;
+        elif [ ${RTR} = 1 ]
+        then
+            return 1;
+        fi
+        CUR=${theme_names[${RES}]}
+        SELECTED=${RES}
+    done
+}
+
+###
+# Create if not exists, then removes #include of .theme file (if present) and add the selected theme to the end.
+# Repeated calls should leave the config clean-ish
+###
+function set_theme()
+{
+    CDIR="${HOME}/.config/rofi/"
+    if [ ! -d "${CDIR}" ]
+    then
+        mkdir -p ${CDIR}
+    fi
+    if [ -f "${CDIR}/config.rasi" ]
+    then
+        ${SED} -i "/@import.*/d" "${CDIR}/config.rasi"
+        echo "@import \"${1}\"" >> "${CDIR}/config.rasi"
+    else
+        if [ -f "${CDIR}/config" ]
+        then
+            ${SED} -i "/rofi\.theme: .*\.rasi$/d" "${CDIR}/config"
+        fi
+        echo "rofi.theme: ${1}" >> "${CDIR}/config"
+    fi
+}
+
+############################################################################################################
+# Actual program execution
+###########################################################################################################
+##
+# Get installed themes
+##
+get_themes
+
+##
+# Do check if there are themes.
+##
+{# Escape the "{#" part of the line so Ansible does not interpret it. #}
+if [ ${{ '{#' }}themes[@]} = 0 ]
+then
+    ${ROFI} -e "No themes found."
+    exit 0
+fi
+
+# FIXME check if theme is supported ?
+
+
+##
+# Create copy of config to play with in preview
+##
+create_config_copy
+
+
+# FIXME backup current theme so we can rollback
+# FIXME function? Fact file?
+current_theme_file="${THEMEDIR}/current_global_theme"
+previous_theme_file="${THEMEDIR}/previous_global_theme"
+
+
+##
+# Show the themes to user.
+##
+if select_theme && [ -n "${SELECTED}" ]
+then
+    selected_full_path="${themes[${SELECTED}]}"
+    # Set rofi theme.
+    set_theme "${selected_full_path}"
+    # Specify selected global theme name.
+    SELECTED_THEME="${theme_names[${SELECTED}]}"
+fi
+
+
+# FIXME is this necessary?
+function rollback_previous_theme() {
+    # FIXME TODO
+    if [ ! -r "$previous_theme_file" ]; then
+        echo "No previous theme on \"${previous_theme_file}\" file."
+        echo "WARNING: Unable to rollback."
+        exit 1
+    fi
+    # Rollback to previous theme if any.
+    mv "$previous_theme_file" "$current_theme_file"
+    # FIXME restore sed backups
+    # FIXME reload conf if necessary
+}
+
+
+##
+# Remove temp. config.
+##
+rm ${TMP_CONFIG_FILE}
+
+if [ -z "$SELECTED_THEME" ]; then
+    # No theme selected, no change necessary.
+    exit 0
+fi
+
+# FIXME write theme name into one file: ~/.themes/current_theme
+# this way, ansible can collect the current theme as part of gather_fact?
+# Backup previous theme name if exists, so we can rollback in case of failure.
+if [ -r "$current_theme_file" ]; then
+    mv "$current_theme_file" "$previous_theme_file"
+fi
+# Write the new theme name.
+echo "${SELECTED_THEME}" > "$current_theme_file"
+# FIXME only fact file necessary?
+cat > "$GLOBALTHEMEFILE" <<EOF
+[global]
+theme_name=${SELECTED_THEME}
+EOF
+
+
+# Change the actual global theme.
+# For every application supporting dynamic theme changing, launch its specific
+# script.
+for application in $APPLIST; do
+    # FIXME check if script exists and is in path
+    ${application}_change_theme $HOMEDIR $THEMEDIR $SELECTED_THEME
+    # FIXME check RC and rollback if failed?
+done
+
+unset HOMEDIR
+unset THEMEDIR
+unset APPLIST
+unset SELECTED_THEME
+

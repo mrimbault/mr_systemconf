@@ -1,0 +1,11 @@
+
+- name: Load i3wm {{ theme }} theme variables.
+  include_vars: "vars/i3_theme_{{ theme }}.yml"
+  tags: theme, i3, i3wm
+
+- name: Update i3wm {{ theme }} theme file.
+  template:
+    src: 'templates/i3_theme.j2'
+    dest: "{{ theme_dir }}/i3_theme_{{ theme }}"
+  tags: theme, i3, i3wm
+

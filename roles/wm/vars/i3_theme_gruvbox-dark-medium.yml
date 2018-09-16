@@ -1,0 +1,29 @@
+# These variables are used on template file "i3config.j2" from role "wm".
+i3:
+    # client focused
+    clientfocusedborder:              "{{ gruvbox_dark_medium.info }}"
+    clientfocusedbackground:          "{{ gruvbox_dark_medium.info }}"
+    clientfocusedtext:                "{{ gruvbox_dark_medium.hc1 }}"
+    clientfocusedindicator:           "{{ gruvbox_dark_medium.lc1 }}"
+    clientfocusedchildborder:         "{{ gruvbox_dark_medium.lc1 }}"
+    # client unfocused
+    clientunfocusedborder:            "{{ gruvbox_dark_medium.lc1 }}"
+    clientunfocusedbackground:        "{{ gruvbox_dark_medium.lc1 }}"
+    clientunfocusedtext:              "{{ gruvbox_dark_medium.lc2 }}"
+    clientunfocusedindicator:         "{{ gruvbox_dark_medium.lc1 }}"
+    clientunfocusedchildborder:       "{{ gruvbox_dark_medium.lc1 }}"
+    # client focused inactive
+    clientfocusedinactiveborder:      "{{ gruvbox_dark_medium.lc1 }}"
+    clientfocusedinactivebackground:  "{{ gruvbox_dark_medium.lc1 }}"
+    clientfocusedinactivetext:        "{{ gruvbox_dark_medium.info }}"
+    clientfocusedinactiveindicator:   "{{ gruvbox_dark_medium.lc1 }}"
+    clientfocusedinactivechildborder: "{{ gruvbox_dark_medium.lc1 }}"
+    # client urgent
+    clienturgentborder:               "{{ gruvbox_dark_medium.urg }}"
+    clienturgentbackground:           "{{ gruvbox_dark_medium.urg }}"
+    clienturgenttext:                 "{{ gruvbox_dark_medium.hc2 }}"
+    clienturgentindicator:            "{{ gruvbox_dark_medium.lc1 }}"
+    clienturgentchildborder:          "{{ gruvbox_dark_medium.lc1 }}"
+    # client background FIXME
+    clientbackground:                 "{{ gruvbox_dark_medium.lc1 }}"
+
