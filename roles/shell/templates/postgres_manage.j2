@@ -10,7 +10,8 @@
 export PGMANAGE="{{ git_dir }}/postgres-manage/postgres.pl"
 export pgtools="{{ git_dir }}/postgres-manage/"
 export pgsrc="{{ git_dir }}/postgresql/"
-export postgres_manage="{{ git_dir }}/postgres-manage/postgres-manage.conf"
+# FIXME requires a proper install directory
+export postgres_manage="{{ home_dir }}/tools/postgres-manage/postgres-manage.conf"
 
 function pg {
     if [[ "$1" == "git" ]]; then
