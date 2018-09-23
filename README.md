@@ -1,10 +1,41 @@
 
-Many thanks to @rjuju for sharing its .vimrc with me.
+Many thanks to [@rjuju](https://github.com/rjuju) for sharing its .vimrc with me.
 I was completely lost at first, and it gave me just the amount of frustration I needed to became obsessed with understanding it and making it my own.
 And in the process of doing so (I'm really not finished, and will likely never be), I ended dropping my whole system configuration and starting it all over.
 Again, thank you.
 
-For all of you that won't "read me": you're probably right, I write too much.
+# TL;DR
+
+For all of you that just searching for configuration files and don't care about Ansible, here is the main configuration files locations:
+
+- editor
+  - [.vimrc file](roles/editor/templates/vimrc.j2)
+  - [vim theme files](roles/editor/files/)
+- terminal
+  - [termite config file](roles/terminal/templates/termiteconfig.j2)
+  - [.tmux.conf file](roles/terminal/templates/tmux.j2)
+- shell
+  - [.inputrc file](role/shell/files/inputrc.sh)
+  - [.bash_profile file](role/shell/files/bash_profile.sh)
+  - [.bashrc file](roles/shell/files/bashrc.sh)
+  - [bash aliases configuration file](role/shell/files/bash_aliases.sh)
+  - [bash man configuration file](role/shell/files/bash_colored_man.sh)
+  - [bash path configuration file](role/shell/files/bash_path.sh)
+  - [bash prompt configuration file](role/shell/files/bash_prompt.sh)
+  - [env variables configuration file](role/shell/files/env.sh)
+  - [lc_language configuration file](role/shell/files/lc_language.sh)
+  - [postgres_manage configuration file](role/shell/templates/postgres_manage.j2)
+- systemd
+  - [autologin unit file](roles/systemd/templates/getty-tty1-override.j2)
+- x
+  - [.xinitrc file](roles/x/files/xinitrc)
+- window manager
+  - [i3 configuration file](roles/wm/templates/i3config.j2)
+  - [i3blocks configuration file](roles/wm/templates/i3blocks.j2)
+  - [rofi configuration file](roles/wm/templates/rofi.j2)
+  - [dunst configuration file](roles/wm/templates/dunstrc.j2)
+
+And for all of you that won't "read me" at all: you're probably right, I write too much.
 
 
 # Questions people may ask, frequently or not
@@ -34,7 +65,7 @@ So, seriously: *don't install it!*
 Just grab anything you want and make it your own, and leave out what you don't want, like or understand.
 
 
-## What version of <software name> is compatible with your configuration file?
+## What version of "software name" is compatible with your configuration file?
 
 Usually, the latest available on the Linux distribution I'm using (currently Arch Linux).
 I don't bother to test compatibily with previous versions, and use the newest features I'm aware of (if I understand them).
