@@ -16,8 +16,17 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 command=/usr/lib/i3blocks/$BLOCK_NAME
+
+separator=true
 separator_block_width=15
 markup=none
+
+# Global color configuration.
+# FIXME
+
+# FIXME Empty block to display the first separator?
+#[empty]
+
 
 # Volume indicator
 #
@@ -51,7 +60,7 @@ interval=30
 #instance=wlan0
 #color=#00FF00
 interval=10
-separator=false
+
 
 # FIXME signal strength?
 
@@ -72,7 +81,7 @@ interval=5
 label=CPU
 interval=10
 min_width=CPU: 100.00%
-#separator=false
+
 
 [load_average]
 interval=10
@@ -91,7 +100,10 @@ interval=30
 # Date Time
 #
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+#command=date '+%d-%m-%Y %H:%M:%S'
+# The first command prints long description, the second one prints short description.
+#FIXME command="date '+%d %B %Y %Hh %Mm %Ss';date '+%d %b %Y %H:%M'"
+command=date '+%d %b %Y %H:%M'
 interval=5
 
 # Generic media player support
@@ -134,6 +146,9 @@ interval=5
 #interval=once
 #signal=11
 
+# FIXME Empty block to display the last separator?
+#[empty]
+
 # FIXME blocks to check and integrate
 # https://github.com/vivien/i3blocks-contrib/tree/master/aur-update
 # https://github.com/vivien/i3blocks-contrib/tree/master/arch-update
@@ -143,3 +158,9 @@ interval=5
 # https://github.com/vivien/i3blocks-contrib/tree/master/time
 # https://github.com/vivien/i3blocks-contrib/tree/master/temperature
 # https://github.com/vivien/i3blocks-contrib/tree/master/rofi-calendar
+#
+# "persistent" blocks ideas
+# - i3 focused container split orientation
+# - sound
+# - brightness
+
