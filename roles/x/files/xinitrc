@@ -79,6 +79,7 @@ env > ~/.xenv
 # FIXME "-V -d all" are used for debug mode
 echo "Starting at $(date)" >> ~/.i3/logfile
 exec /bin/i3 $i3debug >> ~/.i3/logfile 2>&1
+# FIXME logrotate .i3/logfile
 
 # Due to "exec", everything after this point will be ignored
 # FIXME if required to set up things (like restore env configuration) after the
