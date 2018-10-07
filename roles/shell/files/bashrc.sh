@@ -57,5 +57,6 @@ fi
 unset confdir
 
 # Source autojump (NB: this modify the PROMPT_COMMAND variable).
-. /etc/profile.d/autojump.bash
+# FIXME commented, autojump causes bash to core dump for some reason
+#. /etc/profile.d/autojump.bash
 
