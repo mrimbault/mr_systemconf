@@ -273,22 +273,22 @@ if exists("&wildignorecase")
 endif
 set showfulltag
 
-" Enable line numbers:
+" Enable line numbers.
 set number
 
-" Starts scrolling 5 lines before the edge of the visible window:
+" Starts scrolling 5 lines before the edge of the visible window.
 set scrolloff=5
 
 " Always ask for confirmation for a command that may fail (like quit with
-" unwritten modifications):
+" unwritten modifications).
 set confirm
 
-" Always show tab and status lines:
+" Always show tab and status lines.
 set showtabline=2
 set laststatus=2
 
 " Briefly jumps to matching surrounding character (like "(") when one is
-" typed:
+" typed.
 set showmatch
 
 " Add support for two-spaces ending sentences in |text-objects|.
@@ -307,20 +307,20 @@ set cpoptions+=J
 
 " Allow modified buffers to be put on background (by default, switched off
 " buffers are closed, which prevents switching off buffers containing unsaved
-" changes):
+" changes).
 set hidden
 
-" Allow backspacing over everything in insert mode:
+" Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
 
-" Defines how special characters are shown:
+" Defines how special characters are shown.
 set listchars=tab:▸\ ,eol:¬,trail:¤,nbsp:¤,extends:>,precedes:<
 set list
-" Highlights current line:
+" Highlights current line.
 set cursorline
-" Highlights 80th column:
+" Highlights 80th column.
 set colorcolumn=80
-" Highlights trailing whitespaces using syntax error colors:
+" Highlights trailing whitespaces using syntax error colors.
 highlight def link ExtraWhitespace Error
 match ExtraWhitespace /\s\+$/
 
@@ -347,9 +347,9 @@ match ExtraWhitespace /\s\+$/
     augroup END
 "endif
 " FIXME
-" Set active window to at least 30 lines:
+" Set active window to at least 30 lines.
 "set winheight=30
-" Set minimum lines to any split window to 5 lines:
+" Set minimum lines to any split window to 5 lines.
 "set winminheight=5
 
 " Toggle insert paste mode.
@@ -360,7 +360,7 @@ set pastetoggle=<F2>
 " GUI configuration
 "-------------------
 
-" Remove menu bar, toolbar and scroll bars:
+" Remove menu bar, toolbar and scroll bars.
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
@@ -371,7 +371,7 @@ set guioptions-=L
 "-----------------
 " FIXME set general and specific coding configuration
 "
-" Tab special character appear as 4 spaces:
+" Tab special character appear as 4 spaces.
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -386,18 +386,18 @@ set shiftwidth=4
 " https://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim/21323445#21323445
 "
 " Special indentation rules for PostgreSQL project
-" (see: https://www.postgresql.org/docs/current/static/source-format.html):
+" (see: https://www.postgresql.org/docs/current/static/source-format.html).
 " FIXME to be checked
 if match(getcwd(), "/pgsql") >=0 || match(getcwd(), "/postgresql") >= 0
-  " C-indent style to apply (see: |cino-(|):
+  " C-indent style to apply (see: |cino-(|).
   set cinoptions=(0
-  " Tab appear as 4 spaces long:
+  " Tab appear as 4 spaces long.
   set tabstop=4
   set shiftwidth=4
 endif
 " FIXME include pgindent call ?
 
-" Enable syntax highlighting:
+" Enable syntax highlighting.
 syntax on
 
 "==============================================================================
@@ -408,13 +408,12 @@ syntax on
 source {{ theme_dir }}/current_theme.vim
 {# ANSIBLE VARIABLE SECTION STOP #}
 
-"==============================================================================
 " Searching configuration
 "-------------------------
-" Show matches while typing search pattern with "/" or "?":
+" Show matches while typing search pattern with "/" or "?".
 set incsearch
 " Highlights search matches only during search (allowed by incsearch), not
-" between searches:
+" between searches.
 augroup vimrc-incsearch-highlight
   autocmd!
   autocmd CmdlineEnter [/\?] :set hlsearch
@@ -524,9 +523,10 @@ nnoremap <c-p><c-q> :CtrlPQuickfix<CR>
 " FIXME quickfix and grep:
 " see: https://medium.com/usevim/vim-101-quickfix-and-grep-c782cb65e524
 
-" Remap escaping key to "jk" while on INSERT mode.
+" Remap escaping key to "jk" while on INSERT and VISUAL modes.
 " See: http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
 inoremap jk <ESC>
+vnoremap jk <ESC>
 
 " Map the ":update" command (save but only write if file has changed):
 nnoremap <leader><leader> :update<CR>
