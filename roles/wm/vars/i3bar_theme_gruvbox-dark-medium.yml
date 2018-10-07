@@ -2,7 +2,7 @@
 i3bar:
     background: "{{ gruvbox_dark_medium.lc1 }}"
     statusline: "{{ gruvbox_dark_medium.lc2 }}"
-    separator:  "{{ gruvbox_dark_medium.lc1 }}"
+    separator:  "{{ gruvbox_dark_medium.lcsep }}"
 
     focusedworkspacebackground: "{{ gruvbox_dark_medium.info }}"
     focusedworkspacetext:       "{{ gruvbox_dark_medium.hc1 }}"

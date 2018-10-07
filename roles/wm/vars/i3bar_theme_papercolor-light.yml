@@ -2,7 +2,7 @@
 i3bar:
     background: "{{ papercolor_light.lc1 }}"
     statusline: "{{ papercolor_light.lc2 }}"
-    separator:  "{{ papercolor_light.lc1 }}"
+    separator:  "{{ papercolor_light.lcsep }}"
 
     focusedworkspacebackground: "{{ papercolor_light.info }}"
     focusedworkspacetext:       "{{ papercolor_light.hc1 }}"

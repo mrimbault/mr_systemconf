@@ -2,7 +2,7 @@
 i3bar:
     background: "{{ badwolf.lc1 }}"
     statusline: "{{ badwolf.lc2 }}"
-    separator:  "{{ badwolf.lc1 }}"
+    separator:  "{{ badwolf.lcsep }}"
 
     focusedworkspacebackground: "{{ badwolf.info }}"
     focusedworkspacetext:       "{{ badwolf.hc1 }}"
