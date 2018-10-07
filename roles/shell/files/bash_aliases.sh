@@ -15,6 +15,12 @@ alias la='ls -A'
 alias lt='ls -alFrt'
 alias l='ls -CF'
 
+# Change mount output to an aligned one.
+alias mount='mount | column --table'
+
+# While atop is installed, no reason to use plain top.
+alias top='atop'
+
 # Vim aliases.
 alias vi='vim'
 alias view='vim -R'
@@ -23,7 +29,7 @@ alias view='vim -R'
 alias j="autojump"
 
 # Get external IP address.
-alias myip="curl http://ifconfig.me/ip"
+alias myip="curl ipecho.net/plain; echo"
 
 # I used to have an alias on which(1) that extended it to find aliases, until I
 # found about the type(1P) command.
