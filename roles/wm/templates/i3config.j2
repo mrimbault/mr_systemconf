@@ -12,7 +12,6 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-# FIXME check other fonts
 font pango:Hack, FontAwesome 11
 
 # Use Vim keys for focus, movement, and resize directions.
@@ -27,16 +26,22 @@ floating_modifier $mod
 # Start a terminal.
 bindsym $mod+Return exec i3-sensible-terminal
 
-# Kill focused window.
-# FIXME ask for confirmation: https://faq.i3wm.org/question/6297/prompt-to-close-a-window-by-modshiftq.1.html
-bindsym $mod+Shift+q kill
+# Kill focused window, asking confirmation.
+set $close "Close the window? (y/n)"
+mode $close {
+    bindsym y kill, mode default
+    bindsym Return kill, mode default
+    bindsym n mode default
+    bindsym Escape mode default
+}
+bindsym $mod+Shift+q mode $close
 
 # Program launcher: rofi.
 bindsym $mod+d exec --no-startup-id rofi -show run
 
 # Easy switch between windows using rofi.
 bindsym $mod+Tab exec --no-startup-id rofi -show window
-# FIXME available alternate bindings for similar features:
+# Note: Available alternate bindings for similar features:
 # bindsym $mod+Shift+Tab
 # bindsym $mod+Control+Tab
 
@@ -286,7 +291,7 @@ bar {
     position top
     font pango:Hack, FontAwesome 11
     strip_workspace_numbers yes
-    separator_symbol "■"
+    separator_symbol "┃"
     bindsym button4 nop
     bindsym button5 nop
     # FIXME to check
