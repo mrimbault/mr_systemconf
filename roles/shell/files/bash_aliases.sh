@@ -22,6 +22,9 @@ alias view='vim -R'
 # Autojump alias.
 alias j="autojump"
 
+# Get external IP address.
+alias myip="curl http://ifconfig.me/ip"
+
 # I used to have an alias on which(1) that extended it to find aliases, until I
 # found about the type(1P) command.
 
