@@ -26,15 +26,9 @@ floating_modifier $mod
 # Start a terminal.
 bindsym $mod+Return exec i3-sensible-terminal
 
-# Kill focused window, asking confirmation.
-set $close "Close the window? (y/n)"
-mode $close {
-    bindsym y kill, mode default
-    bindsym Return kill, mode default
-    bindsym n mode default
-    bindsym Escape mode default
-}
-bindsym $mod+Shift+q mode $close
+# Terminate focused window by sending it WM_DELETE_WINDOW (some clients will
+# ask for confirmation before closing).
+bindsym $mod+Shift+q kill
 
 # Program launcher: rofi.
 bindsym $mod+d exec --no-startup-id rofi -show run
