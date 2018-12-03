@@ -6,7 +6,7 @@ Again, thank you.
 
 # TL;DR
 
-For all of you that just searching for configuration files and don't care about Ansible, here is the main configuration files locations:
+For all of you that are just searching for configuration files and don't care about Ansible, here is the main configuration files locations:
 
 - editor
   - [.vimrc file](roles/editor/templates/vimrc.j2)
