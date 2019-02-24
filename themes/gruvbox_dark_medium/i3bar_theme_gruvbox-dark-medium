@@ -1,0 +1,28 @@
+
+    # FIXME some comments ?
+    colors {
+        # status line text, background and separator
+        statusline #ebdbb2
+        background #3c3836
+        separator  #ebdbb2
+        # focused workspace indicator border, background and text
+        focused_workspace   #3c3836 \
+                            #83a598 \
+                            #282828
+        # inactive workspace indicator border, background and text
+        inactive_workspace  #3c3836 \
+                            #ebdbb2 \
+                            #3c3836
+        # active workspace indicator border, background and text
+        active_workspace    #3c3836 \
+                            #fabd2f \
+                            #282828
+        # urgent workspace indicator border, background and text
+        urgent_workspace    #3c3836 \
+                            #fb4934 \
+                            #fbf1c7
+        # binding mode indicator message border, background and text
+        binding_mode        #3c3836 \
+                            #fabd2f \
+                            #282828
+    }
