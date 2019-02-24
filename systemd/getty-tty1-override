@@ -1,0 +1,13 @@
+# WARNING: this configuration is only safe if a boot level authentication is in
+# place (like full disk encryption passphrase prompt)!!!
+# See: https://wiki.archlinux.org/index.php/getty#Virtual_console
+
+# Automatic login on tty1
+[Service]
+Type=simple
+TTYVTDisallocate=no
+ExecStart=
+# FIXME username is hardcoded here
+ExecStart=-/usr/bin/agetty --autologin mael --noclear %I 38400 $TERM
+
+

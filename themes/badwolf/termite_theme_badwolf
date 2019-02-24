@@ -1,0 +1,39 @@
+
+# If both of these are unset, cursor falls back to the foreground color,
+# and cursor_foreground falls back to the background color.
+#cursor = #d9cec3
+#cursor_foreground = #141413
+
+# FIXME
+foreground = #d9cec3
+foreground_bold = #d9cec3
+background = #141413
+
+# If unset, will reverse foreground and background when highlighting.
+highlight = #2f2f2f
+
+# black
+color0  = #141413
+color8  = #282622
+# red
+color1  = #790012
+color9  = #ff2c4b
+# green
+color2  = #455f00
+color10 = #aeee00
+# yellow
+color3  = #ffa724
+color11 = #fade3e
+# blue
+color4  = #005fff
+color12 = #0a9dff
+# magenta
+color5  = #a04b62
+color13 = #ff9eb8
+# cyan
+color6  = #53976e
+color14 = #8cffba
+# white
+color7   = #998f84
+color15 = #d9cec3
+

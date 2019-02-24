@@ -1,0 +1,10 @@
+/*
+ * rofi configuration file
+ */
+
+    /* This line will automatically be replaced by "select_theme" script.  In
+     * consequence, it is better if it is kept at the end of the configuration
+     * file.
+     */
+/*	rofi.theme: rofi_current_theme.rasi*/
+

@@ -1,0 +1,28 @@
+
+# FIXME some comments ?
+# focused client colors for border, background, text, indicator and child border
+client.focused          #0a9dff \
+                        #0a9dff \
+                        #141413 \
+                        #282622 \
+                        #282622
+# unfocused client colors
+client.unfocused        #282622 \
+                        #282622 \
+                        #998f84 \
+                        #282622 \
+                        #282622
+# focused and inactive client colors
+client.focused_inactive #282622 \
+                        #282622 \
+                        #0a9dff \
+                        #282622 \
+                        #282622
+# urgent client colors
+client.urgent           #ff2c4b \
+                        #ff2c4b \
+                        #d9cec3 \
+                        #282622 \
+                        #282622
+# client background color
+client.background       #282622
