@@ -1,249 +1,160 @@
 
-Many thanks to [@rjuju](https://github.com/rjuju) for sharing its .vimrc with me.
-I was completely lost at first, and it gave me just the amount of frustration I needed to became obsessed with understanding it and making it my own.
-And in the process of doing so (I'm really not finished, and will likely never be), I ended dropping my whole system configuration and starting it all over.
-Again, thank you.
+Many thanks to [@rjuju](https://github.com/rjuju) for sharing its .vimrc with
+me.  I was completely lost at first, and it gave me just the amount of
+frustration I needed to became obsessed with understanding it and making it my
+own.  And in the process of doing so (I'm really not finished, and will likely
+never be), I ended dropping my whole system configuration and starting it all
+over.  Again, thank you.
 
-# TL;DR
+# Index
 
-For all of you that are just searching for configuration files and don't care about Ansible, here is the main configuration files locations:
+Here is the main configuration files locations:
 
 - editor
-  - [.vimrc file](roles/editor/templates/vimrc.j2)
-  - [vim theme files](roles/editor/files/)
+  - [.vimrc file](editor/vimrc)
 - terminal
-  - [termite config file](roles/terminal/templates/termiteconfig.j2)
-  - [.tmux.conf file](roles/terminal/templates/tmux.j2)
+  - [termite config file](terminal/termite)
+  - [.tmux.conf file](terminal/tmux)
 - shell
-  - [.inputrc file](roles/shell/files/inputrc.sh)
-  - [.bash_profile file](roles/shell/files/bash_profile.sh)
-  - [.bashrc file](roles/shell/files/bashrc.sh)
-  - [bash aliases configuration file](roles/shell/files/bash_aliases.sh)
-  - [bash man configuration file](roles/shell/files/bash_colored_man.sh)
-  - [bash path configuration file](roles/shell/files/bash_path.sh)
-  - [bash prompt configuration file](roles/shell/files/bash_prompt.sh)
-  - [env variables configuration file](roles/shell/files/env.sh)
-  - [lc_language configuration file](roles/shell/files/lc_language.sh)
-  - [postgres_manage configuration file](roles/shell/templates/postgres_manage.j2)
+  - [.inputrc file](shell/inputrc.sh)
+  - [.bash_profile file](shell/bash_profile.sh)
+  - [.bashrc file](shell/bashrc.sh)
+  - [bash aliases configuration file](shell/bash_aliases.sh)
+  - [bash man configuration file](shell/bash_colored_man.sh)
+  - [bash path configuration file](shell/bash_path.sh)
+  - [bash prompt configuration file](shell/bash_prompt.sh)
+  - [env variables configuration file](shell/env.sh)
+  - [lc_language configuration file](shell/lc_language.sh)
+  - [postgres_manage configuration file](shell/postgres_manage.sh)
 - systemd
-  - [autologin unit file](roles/systemd/templates/getty-tty1-override.j2)
+  - [autologin unit file](systemd/getty-tty1-override)
 - x
-  - [.xinitrc file](roles/x/files/xinitrc)
+  - [.xinitrc file](x/xinitrc)
 - window manager
-  - [i3 configuration file](roles/wm/templates/i3config.j2)
-  - [i3blocks configuration file](roles/wm/templates/i3blocks.j2)
-  - [rofi configuration file](roles/wm/templates/rofi.j2)
-  - [dunst configuration file](roles/wm/templates/dunstrc.j2)
-
-And for all of you that won't "read me" at all: you're probably right, I write too much.
+  - [i3 configuration file](wm/i3)
+  - [i3blocks configuration file](wm/i3blocks.conf)
+  - [rofi configuration file](wm/rofi)
+- theme files
+  - [badwolf theme files](themes/badwolf/)
+  - [gruvbox_dark_medium theme files](themes/gruvbox_dark_medium/)
+  - [papercolor_light theme files](themes/papercolor_light/)
 
 
 # Questions people may ask, frequently or not
 
 ## What is this?
 
-These are my system configuration files, for my personal use.
-This configuration is very keyboard oriented, with mostly CLI applications, terminal multiplexing, tiling window manager, Vim-like bindings.
-There are still many things I need to fix or customize, obviously, so you will find many "FIXME" in there.
+These are my system configuration files, for my personal use.  This
+configuration is very keyboard oriented, with mostly CLI applications, terminal
+multiplexing, tiling window manager, Vim-like bindings.  There are still many
+things I need to fix or customize, obviously, so you will find many "FIXME" in
+there.
 
-I tend to use my configuration files as my notebook when I learn how things work.
-As most of this knowledge came from what other people shared, I thought it was only right to do the same.
-Hopefully, this may help you to get some ideas or solve a configuration problem.
-And maybe that some of you will give me feedback, helping me to improve my configuration and learn about new and cooler things (or feel silly for missing something basic).
+I tend to use my configuration files as my notebook when I learn how things
+work.  As most of this knowledge came from what other people shared, I thought
+it was only right to do the same.  Hopefully, this may help you to get some
+ideas or solve a configuration problem.  And maybe that some of you will give
+me feedback, helping me to improve my configuration and learn about new and
+cooler things (or feel silly for missing something basic).
 
 
 ## How do I install it?
 
 You don't.
 
-This is not a functionnal piece of software, and there will be no stable release.
-Anything may change at any time without any warning, and there will be breaking changes as I may decide to drop any software altogether.
-There is no guarantee that it will work at all with your environment, and if it doesn't I will not fix it if it works for me.
-In fact, if you just clone it and run it using Ansible without understanding what it does, this will most probably destroy several of your own configuration files.
+This is not a functionnal piece of software, and there will be no stable
+release.  Anything may change at any time without any warning, and there will
+be breaking changes as I may decide to drop any software altogether.  There is
+no guarantee that it will work at all with your environment, and if it doesn't
+I will not fix it if it works for me.  In fact, if you just clone it and run it
+using Ansible without understanding what it does, this will most probably
+destroy several of your own configuration files.
 
-So, seriously: *don't install it!*
-Just grab anything you want and make it your own, and leave out what you don't want, like or understand.
+So, seriously: *don't install it!*  Just grab anything you want and make it
+your own, and leave out what you don't want, like or understand.
 
 
 ## What version of "software name" is compatible with your configuration file?
 
-Usually, the latest available on the Linux distribution I'm using (currently Arch Linux).
-I don't bother to test compatibily with previous versions, and use the newest features I'm aware of (if I understand them).
-
-
-## Why Ansible?
-
-Why not?
-Sure, I could have just created symbolic links from my git directory, and in fact I used to.
-But I have to maintain similar configurations on several computers, Ansible makes deploying things and detecting changes quite simple.
-I was working on understanding Ansible anyway, and this seemed to be a simple enough project to start building things without breaking anything important.
-Also, I wanted for a long time to be able to share a single color scheme between several unrelated applications, and to change it dynamically, and Ansible variables and templates seemed like a possible solution.
-
-NB: this may be using Ansible, but it doesn't _install_ anything, it just copies configuration files (and a few custom scripts), and sometimes replaces strings in them with variable contents (as few as possible).
-I install and update my software manually, the purpose of this project is _not_ to automatically deploy a working environment from scratch.
-In fact, that would be the opposite of what I want.
+Usually, the latest available on the Linux distribution I'm using (currently
+Arch Linux).  I don't bother to test compatibily with previous versions, and
+use the newest features I'm aware of (if I understand them).
 
 
 ## Why is this licensed under (CC BY 4.0)?
 
 https://creativecommons.org/licenses/by/4.0/
 
-As I wrote previously, this is no software, and I'm not a developer.
-There is no source code, only configuration files, a few shell scripts, and too many comments.
-These files are completely and utterly useless without the software they configure.
-So I consider them to be content, like a wiki, and chose a (free) license accordingly.
+As I wrote previously, this is no software.  There is no source code, only
+configuration files, a few shell scripts, and too many comments.  These files
+are completely and utterly useless without the software they configure.  So I
+consider them to be content, like a wiki, and chose a (free) license
+accordingly.
 
 
 ## How can I contribute?
 
-If you want to, you can contribute by raising issues, asking questions about things you don't understand, or suggesting changes.
+If you want to, you can contribute by raising issues, asking questions about
+things you don't understand, or suggesting changes.
 
-Feature requests and pull requests are welcome, but I will probably not include anything very sophisticated, at least not without rewritting it completely: that's how I understand and learn things.
-My environment may not be (compositing|responsive|plug and play|blue|mouse friendly|.*), but it will be the sexiest... as long as I can understand it.
-
-
-# Project structure
-
-## Basic structure
-
-Right, so this is using Ansible.
-
-Some basic Ansible knownledge would obviously help, but is not necessary unless you seriously want to use the project "as is" (I don't recommand you to).
-If you're just here to check out the configuration files and take some ideas, you really just need to understand where is what you are looking for.
-
-Now, the basic structure is this one:
-```
-mr_systemconf/
-              \_ inventory-example
-              \_ playbook-example.yml
-              \_ vars/
-              \_ roles/
-```
-
-- `inventory-example` is an example of the file where you store the list and description of the machines the configuration will be copied to.
-- `playbook-example.yml` is an example of the main file, describing what tasks will be applied against what hosts.
-- `vars/` defines several "global" variales, mostly color theme related stuff.
+Feature requests and pull requests are welcome, but I will probably not include
+anything very sophisticated, at least not without rewritting it completely:
+that's how I understand and learn things.  My environment may not be
+(compositing|responsive|plug and play|blue|mouse friendly|.*), but it will be
+the sexiest... as long as I can understand it.
 
 
-## Ansible roles
 
-This project is separated in several Ansible roles.
-At the time of writing this, I have these:
+# Configuration sections, tips, cheatsheet, survival kit
 
-```
-roles/
-      \_ systemd/
-      \_ x/
-      \_ shell/
-      \_ editor/
-      \_ terminal/
-      \_ wm/
-```
+Now, let's see what configuration sections I have at this point.
 
-Most of these roles use several common files and subdirectories:
-```
-myrole/
-       \_ tasks/
-                \_ main.yml
-       \_ vars/
-       \_ files/
-       \_templates/
-```
+I will try to include resources to install the applications I use, and various
+tips the key combos I frequently use.  Many of them are custom ones, sometimes
+requiring the addition of a plugin or a custom script to work.
 
-
-- `tasks/` is the directory where you will find what the role will do when called from a playbook, in what order, using what parameters (like copying `select_monitor_layout.sh` from `files/` directory to the destination `/usr/local/bin/select_monitor_layout` and setting its permissions to 755, using `sudo`).
-  - `tasks/main.yml` is the main tasks file, the one the role executes first, it may executes other tasks files from the `tasks/` directory.
-- `vars/` also contains `.yml` files, but these are only used to initialize variables before or during executing specific tasks ; the files from this directory are called explicitely from `tasks/main.yml` file, and are mostly used to setup color themes variables.
-- `files/` : is the directory used to put the files I want to copy without changing their content to a specific destination (using "file" Ansible module)
-- `templates/` : is the directory used to put the files I want to copy to a specific destination and adapt their content with Jinga syntax, mostly variables and includes (using "template" Ansible module)
-
-So, long story short: if you are looking for a configuration file, you will find them all by running this command from the project root:
-``` bash
-$ ls -l roles/*/{templates,files}/
-```
-
-If the file you are interested in is under a `files/` directory, it is copied without modification, so it does not contain any Jinga2 variable, include, or self destructing instructions.
-If you want to see where and how it is copied by Ansible, look for the corresponding task into the `tasks/` directory of the role that contains this file.
-
-If it is under a `templates/` directory, there is a good chance it contains some Jinga2 templating strings that won't work if you just copy and paste them to you own configuration file (but you are not going to do that, right?).
-You can find them this way:
-``` bash
-$ grep -E "{{.*}}|{#.*#}|{%.*%}" myfile.j2
-```
-
-Some Jinga2 references to understand what these strings do:
-- https://docs.ansible.com/ansible/2.6/user_guide/playbooks_templating.html
-- http://jinja.pocoo.org/
-
-
-So, let's say you are looking for the `.vimrc` configuration file, you will find it at this place:
-``` bash
-$ ls roles/editor/templates/
-vimrc.j2
-```
-
-It is a template, you can check for Jinga2 variables:
-``` bash
-$ grep -E "{{.*}}|{#.*#}|{%.*%}" roles/editor/templates/vimrc.j2
-{# ANSIBLE VARIABLE SECTION START #}
-source {{ theme_dir }}/current_theme.vim
-{# ANSIBLE VARIABLE SECTION STOP #}
-```
-
-To understand how it is copied (the destination location and name you probably already know, but you may want to understand what this `current_theme.vim` file is), you can check the contents of the editor role tasks file:
-``` bash
-$ view roles/editor/tasks/main.yml
-```
-
-That's all.
-
-...
-
-OK, maybe that's kinda long and complicated if you just came here to check out a `.vimrc` file.
-Sorry about that.
-
-
-# Roles, tips, cheatsheet, survival kit
-
-Now, let's see what roles I have at this point.
-
-I will try to include resources to install the applications I use, and various tips the key combos I frequently use.
-Many of them are custom ones, sometimes requiring the addition of a plugin or a custom script to work.
-
-They are inspired from Vim bindings when relevant (like movements, splits), and optimized for an AZERTY fr keyboard layout (sorry, that's what I use, but I really tried not to do bindings like `M-A à` or `C-€`).
+They are inspired from Vim bindings when relevant (like movements, splits), and
+optimized for an AZERTY fr keyboard layout (sorry, that's what I use, but I
+really tried not to do bindings like `M-A à` or `C-€`).
 
 
 ## systemd
 
-For now, this role is only used to deploy an unit file used to autologin.
+For now, the only configuration file is used to deploy an unit file used to
+autologin.
 
-*WARNING*: This configuration is only safe for me because my disks are encrypted, so my passphrase is asked at boot time.
-Do not use it blindly.
+*WARNING*: This configuration is only safe for me because my disks are
+encrypted, so my passphrase is asked at boot time.  Do not use it blindly.
 
 
 ## x
 
-This is my xinit (very basic for now) configuration.
-I'm the sole user of my computers, so I don't really have a need for a display manager, or even a login prompt.
+This is my xinit (very basic for now) configuration.  I'm the sole user of my
+computers, so I don't really have a need for a display manager, or even a login
+prompt.
 
 
 ## shell
 
-This is mostly my bash configuration.
-I started looking at zsh, but I'm not there yet.
+This is mostly my bash configuration.  I started looking at zsh, but I'm not
+there yet.
 
-I have a few customizations here, but not much.
-First, I'm using bash `vi` mode, which allows me to switch between *Insert* mode (the default one, similar to Vim's *Insert* mode) and *Command* mode (similar to Vim's *Normal* mode, and not the *Command* mode as the name may suggest).
-To avoid being lost in modes, both the prompt and cursor shape change between modes.
+I have a few customizations here, but not much.  First, I'm using bash `vi`
+mode, which allows me to switch between *Insert* mode (the default one, similar
+to Vim's *Insert* mode) and *Command* mode (similar to Vim's *Normal* mode, and
+not the *Command* mode as the name may suggest).  To avoid being lost in modes,
+both the prompt and cursor shape change between modes.
 
-I won't list keys that work like in Vim *Normal* mode (`h` goes one character left, `l` one character right, `w` one word right, `A` puts you to the end of line and into *Insert* mode, etc.).
-Just some keys that act differently, or that I customized.
+I won't list keys that work like in Vim *Normal* mode (`h` goes one character
+left, `l` one character right, `w` one word right, `A` puts you to the end of
+line and into *Insert* mode, etc.).  Just some keys that act differently, or
+that I customized.
 
 
 | keys      | action                 |
 |----------:|------------------------|
 | `C-n` | *Insert* mode only: auto-completes current command or filename. |
-| `jk`   | *Insert* mode only: enter *Command* mode. |
+| `jk`  | *Insert* mode only: enter *Command* mode. |
 | `k`   | *Command* mode only: go to the previous line from history. |
 | `j`   | *Command* mode only: go to the next line from history. |
 | `v`   | *Command* mode only: open the current command line contents into editor to edit, and executes it when exiting. |
@@ -256,18 +167,14 @@ I did set up the usual aliases.
 
 | alias     | action                 |
 |----------:|------------------------|
-| `l`  |   |
-| `ll`  |   |
-| `lt`  |   |
-| `vi`  |   |
-| `view`  |   |
-| ` `  |   |
-| ` `  |   |
+| `l`  | List files by columns, with file type indicator symbols.  |
+| `ll`  | List every file on a different line, with details.  |
+| `lt`  | Same, but sorted in reverse modification order instead of file name.  |
+| `vi`  | Launch Vim.  |
+| `view`  | Launch Vim in read-only mode.  |
 
-
-I use postgres_manage to quickly build binaries from any PostgreSQL commit, and manage several instances for testing and debugging purpose.
-
-Useful resources:
+I use postgres_manage to quickly build binaries from any PostgreSQL commit, and
+manage several instances for testing and debugging purpose.  Useful resources:
 - https://github.com/rjuju/postgres-manage
 
 | alias     | action                 |
@@ -282,28 +189,21 @@ Useful resources:
 | `pgslave`  | Create a hot standby instance using selected instance as a primary. |
 | `pgtail`  | Executes `tail -f` on the log file of the selected instance. |
 | `pgctags`  | Create tags on the postgresql git directory. |
-| ` `  |   |
-| ` `  |   |
-| ` `  |   |
 
 ## editor
 
-This one is all about Vim, as you may have guess. FIXME
+This one is all about Vim, as you may have guess.  Here you will mostly find my
+`vimrc` template file, and several variables and scripts used to switch themes.
 
-Here you will mostly find my `vimrc` template file, and several variables and scripts used to switch themes.
-
-Useful resources:
+Useful resources (many other links are into the `vimrc` file):
 - https://www.vim.org/
 - http://vim.wikia.com/wiki/Vim_Tips_Wiki
 - http://stevelosh.com/
 
-Many other links are into the vimrc file.
+Vim has way too many useful key combos to list here.  First, the following
+default keys are *disabled* for the purpose of training myself not to use them.
 
-Vim has way too many useful key combos to list here.
-
-First, the following default keys are *disabled* for the purpose of training myself not to use them (FIXME).
-
-| keys                  |
+| disabled keys         |
 |:---------------------:|
 | arrow movements       |
 | `ESC` (*Insert* mode) |
@@ -359,10 +259,8 @@ FIXME search into code?
 
 ## terminal
 
-I mostly use termite and tmux.
-Tmux bindings are heavily modified for a better integration with both Vim and i3.
-
-Useful resources:
+I mostly use termite and tmux.  Tmux bindings are heavily modified for a better
+integration with both Vim and i3.  Useful resources:
 - https://github.com/thestinger/termite
 - https://github.com/tmux/tmux/wiki
 - https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/
@@ -371,7 +269,7 @@ The key bindings I use are tmux commands with different bindings.
 
 | keys      | action                                       |
 |----------:|----------------------------------------------|
-| `M-a`     | New prefix (default to `C-b`). |
+| `M-a`     | New prefix (default one is `C-b`). |
 | `M-a c` `M-a C` | Open new window (`C` use current working directory). |
 | `M-a s` `M-a S` | Split current window in two panes, the new one below to the current one (`S` use current working directory). |
 | `M-a v` `M-a V` | Split current window in two panes, the new one right to the current one (`V` use current working directory). |
@@ -384,22 +282,25 @@ The key bindings I use are tmux commands with different bindings.
 
 ## wm
 
-This is most complicated part.
-Here there are several applications I use:
-- i3
-- i3blocks (into the statusbar)
-- rofi (as a dmenu replacement, and for several other things like theme or monitor layout switch)
-- mons (as a xrandr helper)
-- dunst (notification daemon)
+Apart from Vim configuration, this is most complicated part.  Here there are
+several applications I use:
+- [i3 window manager](https://i3wm.org/).
+- [i3blocks](https://github.com/vivien/i3blocks): add customizable blocks into
+  the i3 statusbar.
+- [rofi](https://github.com/DaveDavenport/rofi): used as a dmenu replacement,
+  and for several other things like theme or monitor layout switch.
+- [dunst](https://dunst-project.org/): notification daemon.
+- [select-monitor-layout](): use [mons](https://github.com/Ventto/mons) and
+  [rofi](https://github.com/DaveDavenport/rofi) to switch between monitor
+  layouts.
+- [unified-theme-selector](): use [rofi](https://github.com/DaveDavenport/rofi)
+  to swith simulaneously swith theme for several applications (i3, Vim,
+  termite, tmux, etc.).
 
-FIXME add details about how this works
-
-Useful resources:
+Useful resources (many other links are into the configuration files):
 - https://i3wm.org/
 - https://github.com/vivien/i3blocks/wiki
 - https://github.com/DaveDavenport/rofi
-
-Many other links are into the configuration files.
 
 These are some of my i3 bindings.
 
