@@ -11,7 +11,7 @@
 # FIXME to check
 if [ "$TERM" = "linux" ]; then
     _SEDCMD='s/.*\*color\([0-9]\{1,\}\).*#\([0-9a-fA-F]\{6\}\).*/\1 \2/p'
-    for i in $(sed -n "$_SEDCMD" $HOME/.Xresources | awk '$1 < 16 {printf "\\e]P%X%s", $1, $2}'); do
+    for i in $(sed -n "$_SEDCMD" "$HOME"/.Xresources | awk '$1 < 16 {printf "\\e]P%X%s", $1, $2}'); do
         echo -en "$i"
     done
     clear
@@ -37,8 +37,8 @@ shopt -s checkwinsize
 stty -ixon
 
 # Create a new tmux session for every terminal (named without imagination with
-# a timestamp).
-if [[ -z "$TMUX" ]]; then
+# a timestamp), only for local connections and if no tmux session exists.
+if [ -z "$TMUX" ] && [ -z "$SSH_CONNECTION" ]; then
     timestamp="$(date +%Y%m%d%H%M%S)"
     # FIXME session name ? different tmux sessions with named roles?
     # FIXME function with parameter to set tmux session name (used from i3 maps)?
@@ -50,8 +50,8 @@ fi
 confdir="$HOME/.bashrc.d"
 if [ -d "$confdir" ]; then
     # Source every shell file from bash configuration directory.
-    for file in ${confdir}/*.sh; do
-        . ${file}
+    for file in "${confdir}"/*.sh; do
+        . "${file}"
     done
 fi
 unset confdir
