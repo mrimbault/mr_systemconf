@@ -1,6 +1,10 @@
 # Enable color support of ls and also add handy color-related aliases.
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    if [ -r ~/.dircolors ]; then
+        eval "$(dircolors -b ~/.dircolors)"
+    else
+        eval "$(dircolors -b)"
+    fi
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -43,3 +47,10 @@ alias myip="curl ipecho.net/plain; echo"
 # I'm really unsure about this, as long as rm(1) has no safety net by default
 # on most systems, I don't want to become relaxed about its use, I want to keep
 # the paranoid double-checks.
+
+# FIXME breaks completion
+# Alias ssh to avoid running into problems due to sending TERM=tmux
+alias ssh='TERM=xterm-color ssh'
+# Same with vagrant ssh to avoid running into problems due to sending TERM=tmux
+alias vssh='TERM=xterm-color vagrant ssh'
+
