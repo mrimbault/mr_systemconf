@@ -4,15 +4,11 @@
 #
 # Create environment variables and aliases to easily manage PostgreSQL
 # built from the postgresql git repository.
-
-# FIXME clarify all this
-
 export MAINGITDIR="/var/lib/git"
 export PGMANAGE="${MAINGITDIR}/postgres-manage/postgres.pl"
 export PGTOOLS="${MAINGITDIR}/postgres-manage/"
 export PGSRC="${MAINGITDIR}/postgresql/"
-# FIXME requires a proper install directory
-export postgres_manage="${HOME}/tools/postgres-manage/postgres-manage.conf"
+export postgres_manage="${HOME}/workdir/postgres-manage/postgres-manage.conf"
 
 function pg {
     if [[ "$1" == "git" ]]; then
@@ -28,7 +24,7 @@ function pg {
         # Silence shellcheck about "[SC1090] Can't follow non-constant source".
         # shellcheck source=/dev/null
         source <("$PGMANAGE" -version "$1" -mode env)
-        export PGLOG="{PGDATA}/log"
+        export PGLOG="${PGDATA}/log"
     fi
 }
 
@@ -54,7 +50,6 @@ alias pgconf='vi $PGDATA/postgresql.conf'
 alias pghba='vi $PGDATA/pg_hba.conf'
 alias pgpid='pgrep -f "postgres: \w+ \w+ .*((\d+)|\[local\])" | head -1'
 alias pgdb='gdb -p $(pgpid)'
-#alias pgtop=FIXME
 alias agc='ag -G c$'
 alias pgconfigure="./configure --with-extra-version=\"-O0@\$(git show HEAD --abbrev-commit --stat|head -n1|cut -d' ' -f2)\" --prefix /tmp/pgbuild --enable-thread-safety --enable-coverage --with-openssl --with-libxml --enable-nls --with-ossp-uuid --enable-cassert --enable-debug --enable-depend --disable-dtrace --enable-tap-tests CFLAGS=\"-gdwarf -g3 -fno-omit-frame-pointer -fno-common\""
 alias pgconfigure_perf="./configure --with-extra-version=\"-O2@\$(git show HEAD --abbrev-commit --stat|head -n1|cut -d' ' -f2)\" --prefix /tmp/pgbuild --enable-thread-safety --disable-coverage --with-openssl --with-libxml --enable-nls --with-ossp-uuid --disable-cassert --enable-debug --enable-depend --disable-dtrace --enable-tap-tests CFLAGS=\"-gdwarf -g3 -fno-omit-frame-pointer -fno-common -O2\""
