@@ -28,6 +28,7 @@ function pg {
         # Silence shellcheck about "[SC1090] Can't follow non-constant source".
         # shellcheck source=/dev/null
         source <("$PGMANAGE" -version "$1" -mode env)
+        export PGLOG="{PGDATA}/log"
     fi
 }
 
