@@ -199,6 +199,7 @@ Useful resources (many other links are into the `vimrc` file):
 - https://www.vim.org/
 - http://vim.wikia.com/wiki/Vim_Tips_Wiki
 - http://stevelosh.com/
+- https://github.com/tpope/vim-unimpaired
 
 Vim has way too many useful key combos to list here.  First, the following
 default keys are *disabled* for the purpose of training myself not to use them.
@@ -230,6 +231,7 @@ Then, I'll put here what I frequently use and is not part of default Vim maps.
 FIXME Space-w: window mode
 FIXME window mode: allow window resize, movement and position change
 FIXME CtrlP mode
+FIXME add vim-unimpaired maps
 
 And finally, this is my own cheatsheet for all these very useful default maps I try to remember.
 

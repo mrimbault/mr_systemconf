@@ -15,7 +15,8 @@ endif
 " Installed using:
 "   git clone https://github.com/junegunn/vim-plug
 "   ln -s vim-plug/plug.vim ~/.vim/autoload/
-" - FIXME install somewhere else ?
+" - FIXME install somewhere else?
+" - FIXME use native packages?
 "
 " Plugin manager commands:
 " - :PlugInstall  -> Install plugins
@@ -32,6 +33,8 @@ endif
 call plug#begin('~/.vim/plugged')
   " Git wrapper
   Plug 'tpope/vim-fugitive'
+  " New mappings
+  Plug 'tpope/vim-unimpaired'
   " Shows signs at lines with quickfix items
   Plug 'tomtom/quickfixsigns_vim'
   " Full path fuzzy file, buffer, mru, tag, ... finder
@@ -61,6 +64,8 @@ call plug#end()
 
 " FIXME check vimux and Tmux navigator: https://blog.bugsnag.com/tmux-and-vim/
 " Plug 'christoomey/vim-tmux-navigator'
+" FIXME check https://github.com/farmergreg/vim-lastplace
+" FIXME check https://github.com/aserebryakov/filestyle
 
 "==============================================================================
 " Plugin vim-airline
@@ -153,14 +158,14 @@ let g:quickfixsigns#vcsdiff#highlight = {'DEL': 'DiffDelete', 'ADD': 'DiffAdd', 
 "   - FIXME TODO
 "   - ansible-lint
 "   - etc.
-" FIXME check if Airlines automatically includes errors
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+" Check for errors at file opening and saving contents.
 let g:syntastic_check_on_open = 1
+" Disable check while saving and closing buffer (:wq, :x, etc.).
 let g:syntastic_check_on_wq = 0
+" Automatically send syntastic errors to the location list.
+let g:syntastic_always_populate_loc_list = 1
+" Disable automatic location list opening.
+let g:syntastic_auto_loc_list = 0
 
 "==============================================================================
 " Plugin vim-fugitive
@@ -579,4 +584,18 @@ nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
 "   i: Find files #including this file:
 nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 
+" Toggle location list using F3 (contains errors when using syntastic plugin).
+" Inspired by:
+" https://gist.github.com/macskay/5525225a53e1d9f0a57533eded680bd0
+nnoremap <F3> :call SyntasticToggle()<CR>
+let g:syntastic_is_open = 0
+function! SyntasticToggle()
+  if g:syntastic_is_open == 1
+    lclose
+    let g:syntastic_is_open = 0
+  else
+    Errors
+    let g:syntastic_is_open = 1
+  endif
+endfunction
 

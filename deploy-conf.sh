@@ -28,6 +28,7 @@ selected_theme=""
 # Declare source and destination files as an associative array.
 declare -A source_dest=(
     # Editor configuration.
+    # FIXME add project specific (PG) configuration files?
     ["editor/vimrc"]="${HOME}/.vimrc"
     # Terminal configuration.
     ["terminal/termite"]="${HOME}/.config/termite/config"
