@@ -225,8 +225,9 @@ Then, I'll put here what I frequently use and is not part of default Vim maps.
 | `C-p C-b` | Open CtrlP menu on buffers mode. | CtrlP |
 | `C-p C-t` | Open CtrlP menu on tags mode. | CtrlP |
 | `F2`  | Toggle *Insert* *Paste* mode. |    |
-| `F4`  | Open TagBar menu list. | TagBar |
-| `F5`  | Open Gundo windows to manage Vim's undo history. | Gundo |
+| `F3`  | Toggle location list (errors). |  syntastic/airline  |
+| `F4`  | Toggle TagBar menu list. | TagBar |
+| `F5`  | Toggle Gundo windows to manage Vim's undo history. | Gundo |
 
 FIXME Space-w: window mode
 FIXME window mode: allow window resize, movement and position change
@@ -238,10 +239,6 @@ And finally, this is my own cheatsheet for all these very useful default maps I 
 | keys      | action                                       |
 |----------:|----------------------------------------------|
 | `F1`      | Open Vim help on a split on top of the current window. |
-| ` `   |    |
-| ` `   |    |
-| ` `   |    |
-| ` `   |    |
 | ` `   |    |
 | ` `   |    |
 | ` `   |    |

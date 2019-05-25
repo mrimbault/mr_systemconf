@@ -559,13 +559,11 @@ inoremap <ESC> <NOP>
 " sentence, paragraph, search, etc.).
 
 
-" Mappings for Cscope searches, using <leader> key on NORMAL mode.
-" Define minimal mappings, as per documentation:
+" Mappings for Cscope searches, using <leader> key on NORMAL mode.  Results go
+" to the location list.
 " FIXME alter these mappings to use "c" as namespace (<leader>cfa, cl, etc.) ?
-" FIXME
+" Interactive search mapping.
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
-" FIXME
-nnoremap <leader>l :call ToggleLocationList()<CR>
 " Direct search mappings.
 "   s: Find this C symbol:
 nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
@@ -584,18 +582,11 @@ nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
 "   i: Find files #including this file:
 nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 
-" Toggle location list using F3 (contains errors when using syntastic plugin).
-" Inspired by:
-" https://gist.github.com/macskay/5525225a53e1d9f0a57533eded680bd0
-nnoremap <F3> :call SyntasticToggle()<CR>
-let g:syntastic_is_open = 0
-function! SyntasticToggle()
-  if g:syntastic_is_open == 1
-    lclose
-    let g:syntastic_is_open = 0
-  else
-    Errors
-    let g:syntastic_is_open = 1
-  endif
-endfunction
+" Toggle location list using F3.  The location list will contain:
+" - errors when using syntastic plugin, automatically updated after opening or
+"   saving a buffer
+" - result of last Cscope search
+" The ToggleLocationList() function is provided by cscove plugin.
+nnoremap <F3> :call ToggleLocationList()<CR>
+
 
